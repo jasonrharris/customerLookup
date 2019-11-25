@@ -9,7 +9,7 @@ import org.jdbi.v3.sqlobject.statement.UseRowMapper;
 import java.util.Set;
 
 public interface CustomerDAO {
-    @SqlUpdate("create table Customer (id bigint auto_increment primary key, surname varchar(50), firstName varchar(50), phoneNumber varchar(25) )")
+    @SqlUpdate("create table if not exists Customer (id bigint auto_increment primary key, surname varchar(50), firstName varchar(50), phoneNumber varchar(25) )")
     void createTable();
 
     @SqlUpdate("insert into Customer (surname, firstName, phoneNumber) values (:surname, :firstName, :phoneNumber)")

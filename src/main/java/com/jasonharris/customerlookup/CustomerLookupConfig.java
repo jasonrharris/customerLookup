@@ -1,14 +1,13 @@
 package com.jasonharris.customerlookup;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.dropwizard.db.DataSourceFactory;
-import org.hibernate.validator.constraints.NotEmpty;
-
 import io.dropwizard.Configuration;
+import io.dropwizard.db.DataSourceFactory;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
+@SuppressWarnings("unused") //values set by Dropwizard from config file
 public class CustomerLookupConfig extends Configuration {
 
     /**
@@ -23,27 +22,25 @@ public class CustomerLookupConfig extends Configuration {
     @Valid
     private String datasourceName;
 
+    @NotNull
+    @Valid
+    private boolean addTestCustomers;
+
      /**
      * @return An instance of database factory deserialized from the
      * configuration file passed as a command-line argument to the application.
      */
     @JsonProperty("database")
-    public DataSourceFactory getDataSourceFactory() {
+    DataSourceFactory getDataSourceFactory() {
         return dataSourceFactory;
     }
 
-    @JsonProperty("database")
-    public void setDataSourceFactory(DataSourceFactory factory) {
-        this.dataSourceFactory = factory;
-    }
-
     @JsonProperty("dataSourceName")
-    public String getDatasourceName() {
+    String getDatasourceName() {
         return datasourceName;
     }
 
-    @JsonProperty("dataSourceName")
-    public void setDatasourceName(String datasourceName) {
-        this.datasourceName = datasourceName;
+    public boolean isAddTestCustomers() {
+        return addTestCustomers;
     }
 }

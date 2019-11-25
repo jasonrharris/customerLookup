@@ -1,6 +1,7 @@
 package com.jasonharris.customerlookup.dao;
 
 import com.codahale.metrics.MetricRegistry;
+import com.jasonharris.customerlookup.CustomerLookupApplication;
 import com.jasonharris.customerlookup.api.Customer;
 import io.dropwizard.db.DataSourceFactory;
 import org.jdbi.v3.core.Jdbi;
@@ -24,8 +25,7 @@ class CustomerDAOIntegrationTest {
     void setUp() {
         Jdbi jdbi = Jdbi.create(getDataSourceFactory().build(new MetricRegistry(), "test"));
         jdbi.installPlugin(new SqlObjectPlugin());
-        customerDAO = jdbi.onDemand(CustomerDAO.class);
-        customerDAO.createTable();
+        customerDAO = CustomerLookupApplication.initialiseDB(jdbi);
     }
 
     @Test

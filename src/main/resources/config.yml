@@ -1,4 +1,5 @@
 dataSourceName: h2
+addTestCustomers: true
 # Database settings.
 database:
   driverClass: org.h2.Driver
