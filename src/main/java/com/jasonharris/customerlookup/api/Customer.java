@@ -3,16 +3,16 @@ package com.jasonharris.customerlookup.api;
 import java.util.Objects;
 
 public class Customer {
+    private final int id;
     private final String firstName;
     private final String surname;
     private final String phoneNumber;
-    private final Address address;
 
-    public Customer(String firstName, String surname, String phoneNumber, Address address) {
+    public Customer(int id, String firstName, String surname, String phoneNumber) {
+        this.id = id;
         this.firstName = firstName;
         this.surname = surname;
         this.phoneNumber = phoneNumber;
-        this.address = address;
     }
 
     public String getFirstName() {
@@ -23,12 +23,12 @@ public class Customer {
         return phoneNumber;
     }
 
-    public Address getAddress() {
-        return address;
-    }
-
     public String getSurname() {
         return surname;
+    }
+
+    public int getId() {
+        return id;
     }
 
     @Override
@@ -37,8 +37,7 @@ public class Customer {
         if (o == null || getClass() != o.getClass()) return false;
         Customer customer = (Customer) o;
         return firstName.equals(customer.firstName) &&
-                surname.equals(customer.surname) &&
-                address.equals(customer.address);
+                surname.equals(customer.surname);
     }
 
     @Override
