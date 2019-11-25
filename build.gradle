@@ -1,0 +1,23 @@
+plugins {
+    id 'java'
+}
+
+group 'jasonharris'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.12
+targetCompatibility = 1.12
+
+repositories {
+    mavenCentral()
+}
+
+test {
+    useJUnitPlatform()
+}
+
+dependencies {
+    compile group: 'io.dropwizard', name: 'dropwizard-core', version: '1.3.17'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.5.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.5.2'
+}
