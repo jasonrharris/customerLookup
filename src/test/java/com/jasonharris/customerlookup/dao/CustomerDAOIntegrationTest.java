@@ -27,7 +27,6 @@ class CustomerDAOIntegrationTest {
         jdbi.installPlugin(new SqlObjectPlugin());
         customerDAO = jdbi.onDemand(CustomerDAO.class);
         customerDAO.createTable();
-
     }
 
     @Test
@@ -37,7 +36,6 @@ class CustomerDAOIntegrationTest {
         customerDAO.insert(SURNAME_APPEARING_MANY_TIMES, "Robert", "0878 783859");
         customerDAO.insert(SURNAME_APPEARING_ONCE, "Robert", "01278 78319");
     }
-
 
     @Test
     @Order(2)
@@ -56,16 +54,15 @@ class CustomerDAOIntegrationTest {
 
     @Test
     @Order(2)
-    void shouldFindCustomersNamedSmith() {
+    void shouldNotFindCustomersWithNoEntryInDB() {
         Set<Customer> customers = customerDAO.findAllBySurname(SURNAME_NOT_IN_DB);
 
         assertTrue(customers.isEmpty());
-
     }
 
     @Test
     @Order(2)
-    void shouldNotFindCustomersNamedJones() {
+    void shouldFindCustomerWithSingleEntryInDB() {
         Set<Customer> customers = customerDAO.findAllBySurname(SURNAME_APPEARING_ONCE);
 
         assertTrue((customers.size() == 1));
