@@ -3,10 +3,15 @@ package com.jasonharris.customerlookup.api;
 import java.util.Objects;
 
 public class Customer {
+    private static final int UNSET_ID = -1;
     private final int id;
     private final String firstName;
     private final String surname;
     private final String phoneNumber;
+
+    public Customer() {
+        this(UNSET_ID,"","","");
+    }
 
     public Customer(int id, String firstName, String surname, String phoneNumber) {
         this.id = id;

@@ -19,7 +19,6 @@ class CustomerSearchResourceTest {
 
     private static final String TEST_SURNAME = "TestSurname";
 
-
     private CustomerSearchResource customerSearchResource;
 
     @Mock
@@ -50,7 +49,6 @@ class CustomerSearchResourceTest {
             Customer expectedCustomer = elementIndex++ == 0 ? firstCustomer : secondCustomer;
             assertEquals(matchedCustomer, expectedCustomer);
         }
-
     }
 
     @Test

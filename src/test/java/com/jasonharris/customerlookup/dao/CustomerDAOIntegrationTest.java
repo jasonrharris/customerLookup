@@ -22,7 +22,6 @@ class CustomerDAOIntegrationTest {
 
     @BeforeAll
     void setUp() {
-
         Jdbi jdbi = Jdbi.create(getDataSourceFactory().build(new MetricRegistry(), "test"));
         jdbi.installPlugin(new SqlObjectPlugin());
         customerDAO = jdbi.onDemand(CustomerDAO.class);
