@@ -1,6 +1,7 @@
 package com.jasonharris.customerlookup.resources;
 
 import com.jasonharris.customerlookup.api.Customer;
+import com.jasonharris.customerlookup.dao.CustomerDAO;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -14,9 +15,15 @@ import java.util.List;
 @Produces(MediaType.APPLICATION_JSON)
 public class CustomerSearchResource {
 
+    private final CustomerDAO customerDAO;
+
+    public CustomerSearchResource(CustomerDAO customerDAO) {
+        this.customerDAO = customerDAO;
+    }
+
     @GET
     @Path("search")
     public List<Customer> findCustomers(@QueryParam("surname") String surname){
-        return Collections.emptyList();
+        return customerDAO.findAllBySurname(surname);
     }
 }

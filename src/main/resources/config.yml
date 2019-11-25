@@ -1,0 +1,10 @@
+dataSourceName: h2
+# Database settings.
+database:
+  driverClass: com.mysql.jdbc.Driver
+  # the username
+  user: customerManager
+  # the password
+  password: customerManager
+  # the JDBC URL; the database is called DWGettingStarted
+  url: jdbc:mysql://localhost:3306/DWGettingStarted

@@ -1,5 +1,7 @@
 package com.jasonharris.customerlookup.api;
 
+import java.util.Objects;
+
 public class Address {
     private final String addressLine1;
     private final String addressLine2;
@@ -27,5 +29,19 @@ public class Address {
 
     public String getPostCode() {
         return postCode;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Address address = (Address) o;
+        return addressLine1.equals(address.addressLine1) &&
+                postCode.equals(address.postCode);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(postCode);
     }
 }
